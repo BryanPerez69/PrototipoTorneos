@@ -1,0 +1,54 @@
+body {
+  padding-top: 100px;
+  padding-right: 100px;
+  padding-left: 600px;
+  padding-bottom: 100px;
+  background-color: #dee6e7;
+}
+
+.form-group {
+  max-width: 360px;
+  padding: 10px;
+  margin: 0 auto;
+}
+.form-group .form-register-heading,
+.form-group .checkbox {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.form-group .checkbox {
+  font-weight: normal;
+}
+.form-group .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-group .form-control:focus {
+  z-index: 2;
+}
+.form-group input[type="text"] {
+  margin-bottom: 1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-group input[type="email"] {
+  margin-bottom: 1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-group input[type="password"] {
+  margin-bottom: 1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-register {
+  max-width: 280px;
+  padding: 5px;
+  margin: 0 auto;
+}

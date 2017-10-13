@@ -7,13 +7,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Ingreso</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{ asset('css/signin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
   </head>
 
   <body>
@@ -46,6 +46,11 @@
           <input type="hidden" name="_target_path" value="homepage" />
 
           <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+      </form>
+
+      <form class="form-register" action="{{ path('user_registration') }}" method="post">
+        <h4 class="form-signin-heading">¡No tienes una cuenta!</h4>
+        <button type="submit" class="btn btn-small btn-primary btn-block">Registrarse</button>
       </form>
 
     </div> <!-- /container -->
