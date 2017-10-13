@@ -51,8 +51,8 @@ class UserController extends Controller
            // ... do any other work - like sending them an email, etc
            // maybe set a "flash" success message for the user
 
-           //return $this->redirectToRoute('user_login');
-           return new Response('Usuario registrado '.$user->getId());
+           return $this->redirectToRoute('login');
+           //return new Response('Usuario registrado '.$user->getId());
 
        }
 
