@@ -2,9 +2,9 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
-inicio:
-    path:     /
-    defaults: { _controller: AppBundle:Default:index }
+# inicio:
+#     path:     /
+#     defaults: { _controller: AppBundle:Default:index }
 
 homepage:
     path:     /home
@@ -15,12 +15,12 @@ user_registration:
     defaults: { _controller: AppBundle:User:register }
 
 login:
-    path:     /login
+    path:     /
     defaults: { _controller: AppBundle:User:login }
 
 login_check:
     path: /login_check
     defaults: { _controller: AppBundle:User:loginCheck }
-    
+
 logout:
     path: /logout

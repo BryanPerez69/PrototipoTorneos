@@ -1,30 +1,60 @@
-<body>
-{# app/Resources/views/security/login.html.twig #}
-{# ... you will probably extend your base template, like base.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+    <title>Signin Template for Bootstrap</title>
 
-<form action="{{ path('login_check') }}" method="post">
-    <label for="username">Usuario:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}", autocomplete="off" />
-    <br>
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="_password" />
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
-    {#
-        If you want to control the URL the user
-        is redirected to on success (more details below)
-        <input type="hidden" name="_target_path" value="/account" />
-    #}
-    <br>
-    {#
-    <input type="checkbox" id="remember_me" name="_remember_me" unchecked />
-    <label for="remember_me">Recordarme</label>
-    #}
-    <input type="hidden" name="_target_path" value="homepage" />
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/signin.css') }}" rel="stylesheet">
+  </head>
 
-    <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
-</form>
-</body>
+  <body>
+
+    {% if error %}
+        <div>{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="container">
+
+      <form class="form-signin" action="{{ path('login_check') }}" method="post">
+          <h2 class="form-signin-heading">Iniciar Sesión</h2>
+          <label for="username" class="sr-only">Usuario:</label>
+          <input type="text" id="username" name="_username" class="form-control"
+            value="{{ last_username }}", autocomplete="off"  placeholder="Usuario" required autofocus/>
+          <label for="password" class="sr-only">Contraseña:</label>
+          <input type="password" id="password" name="_password" class="form-control"  placeholder="Contraseña" required/>
+
+
+          {#
+              If you want to control the URL the user
+              is redirected to on success (more details below)
+              <input type="hidden" name="_target_path" value="/account" />
+          #}
+
+          {#
+          <input type="checkbox" id="remember_me" name="_remember_me" unchecked />
+          <label for="remember_me">Recordarme</label>
+          #}
+          <input type="hidden" name="_target_path" value="homepage" />
+
+          <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+      </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
+  </body>
+</html>

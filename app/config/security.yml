@@ -22,7 +22,7 @@ security:
           anonymous: ~
           http_basic: ~
           form_login:
-            login_path: /login
+            login_path: /
             check_path: /login_check
             # field names for the username and password fields:
             username_parameter: _username
@@ -31,7 +31,7 @@ security:
             # always_use_default_target_path: true
           logout:
             path:   /logout
-            target: /login
+            target: /
 
         main:
           anonymous: ~
@@ -43,6 +43,6 @@ security:
 
 
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        #- { path: ^/$, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/home, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/$, roles: IS_AUTHENTICATED_FULLY }
