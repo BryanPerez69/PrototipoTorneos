@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="user", options={"charset"="utf8", "collation"="utf8_bin"})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="Este email ya esta en uso")
  */

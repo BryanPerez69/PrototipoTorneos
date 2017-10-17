@@ -18,9 +18,7 @@
 
   <body>
 
-    {% if error %}
-        <div>{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+
 
     <div class="container">
 
@@ -31,6 +29,13 @@
             value="{{ last_username }}", autocomplete="off"  placeholder="Usuario" required autofocus/>
           <label for="password" class="sr-only">Contraseña:</label>
           <input type="password" id="password" name="_password" class="form-control"  placeholder="Contraseña" required/>
+
+          {% if error %}
+              <div>
+                  <p style="color:red;"><i>*El usuario o contraseña son invalidos</i></p>
+              </div>
+              {#<div>{ error.messageKey|trans(error.messageData, 'security') }</div>#}
+          {% endif %}
 
 
           {#
