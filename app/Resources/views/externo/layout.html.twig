@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Torneos{% endblock %}</title>
+        {% block stylesheets %}
+          <!-- Bootstrap core CSS -->
+          <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+          <link href="{{ asset('css/barra.css') }}" rel="stylesheet">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+            {{ include('externo/barra.html.twig') }}
+        {% endblock %}
+        {% block javascripts %}
+            <!-- Bootstrap core JavaScript
+            ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+            <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
+            <script src="{{ asset('js/ie-emulation-modes-warning.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

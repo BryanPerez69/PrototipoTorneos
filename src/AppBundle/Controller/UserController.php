@@ -18,7 +18,7 @@ class UserController extends Controller
     */
   public function homeAction()
   {
-    return $this->render('default/home.html.twig');
+    return $this->render('interno/home.html.twig');
   }
 
   /**
@@ -56,8 +56,13 @@ class UserController extends Controller
 
        }
 
+       if($this->isGranted("IS_AUTHENTICATED_FULLY"))
+       {
+         return $this->redirectToRoute('logout');
+       }
+
        return $this->render(
-           'default/register.html.twig',
+           'externo/register.html.twig',
            array('form' => $form->createView())
        );
    }
@@ -67,6 +72,7 @@ class UserController extends Controller
      */
      public function loginAction(Request $request)
       {
+
           $authenticationUtils = $this->get('security.authentication_utils');
 
           // get the login error if there is one
@@ -75,7 +81,12 @@ class UserController extends Controller
           // last username entered by the user
           $lastUsername = $authenticationUtils->getLastUsername();
 
-          return $this->render('default/login.html.twig', array(
+          if($this->isGranted("IS_AUTHENTICATED_FULLY"))
+          {
+            return $this->redirectToRoute('logout');
+          }
+
+          return $this->render('externo/login.html.twig', array(
               'last_username' => $lastUsername,
               'error'         => $error,
           ));

@@ -33,6 +33,15 @@ security:
             path:   /logout
             target: /
 
+          remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+                # por defecto, esta funcionalidad está disponible en una
+                # checkbox en el formulario de login, descomenta la
+                # siguiente línea para activarlo siempre.
+                #always_remember_me: true    
+
         main:
           anonymous: ~
           # activate different ways to authenticate
@@ -44,5 +53,6 @@ security:
 
     access_control:
         - { path: ^/home, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/$, roles: IS_AUTHENTICATED_FULLY }

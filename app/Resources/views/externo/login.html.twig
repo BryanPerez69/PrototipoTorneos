@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+{% extends 'externo/layout.html.twig' %}
 
-    <title>Ingreso</title>
+{% block stylesheets %}
+  {{ parent() }}
+          <!-- Custom styles for this template -->
+          <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+{% endblock %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-  </head>
-
-  <body>
-
-
+{% block body %}
+  {{ parent() }}
 
     <div class="container">
 
@@ -54,17 +43,10 @@
       </form>
 
       <form class="form-register" action="{{ path('user_registration') }}" method="post">
-        <h4 class="form-signin-heading">¡No tienes una cuenta!</h4>
+        <h5 class="form-signin-heading">¡No tienes una cuenta!</h5>
         <button type="submit" class="btn btn-small btn-primary btn-block">Registrarse</button>
       </form>
 
     </div> <!-- /container -->
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
-  </body>
-</html>
+{% endblock %}
