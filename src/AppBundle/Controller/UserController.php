@@ -55,7 +55,7 @@ class UserController extends Controller
            //return new Response('Usuario registrado '.$user->getId());
 
        }
-
+       //se cierra la sesion al salir al register
        if($this->isGranted("IS_AUTHENTICATED_FULLY"))
        {
          return $this->redirectToRoute('logout');
@@ -81,9 +81,10 @@ class UserController extends Controller
           // last username entered by the user
           $lastUsername = $authenticationUtils->getLastUsername();
 
+          //se cierra la sesion al salir al login
           if($this->isGranted("IS_AUTHENTICATED_FULLY"))
           {
-            return $this->redirectToRoute('logout');
+           return $this->redirectToRoute('logout');
           }
 
           return $this->render('externo/login.html.twig', array(
@@ -103,6 +104,13 @@ class UserController extends Controller
         // ya que la route se maneja por el sistema de seguridad
     }
 
+    /**
+    * @Route("/logout", name="logout")
+    */
+    public function logoutAction()
+    {
+
+    }
 
 
 

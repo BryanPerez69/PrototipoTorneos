@@ -1,17 +1,59 @@
-{% extends 'interno/layout.html.twig' %}
+{% extends 'interno/layout_in.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Custom styles for this template -->
+	<link href="{{ asset('css/home.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
 	{{ parent() }}
 	<div class="container">
-        <h2 class="text-center">
-            {{ 'Welcome'|trans }}
-            {% if app.user.role == 'ROLE_ADMIN' %}
-                {{ 'Administrator'|trans }}
-            {% elseif app.user.role == 'ROLE_USER' %}
-                {{ 'User'|trans }}
-            {% endif %}
-            :
-            {{ app.user.username }}
-        </h2>
+		<div class="row">
+			<div class="col-md-8">
+				<h2>Torneos actuales</h2>
+				<div class="col-md-6">
+
+				</div>
+			</div>
+			<div class="col-sm-3 offset-sm-1 blog-sidebar">
+        <div class="sidebar-module sidebar-module-inset">
+          <h4>Carnet</h4>
+          <p>Espacio para generar carnet y subir foto</p>
+        </div>
+        <div class="sidebar-module">
+          <h4>Archives</h4>
+          <ol class="list-unstyled">
+            <li><a href="#">March 2014</a></li>
+            <li><a href="#">February 2014</a></li>
+            <li><a href="#">January 2014</a></li>
+            <li><a href="#">December 2013</a></li>
+            <li><a href="#">November 2013</a></li>
+            <li><a href="#">October 2013</a></li>
+            <li><a href="#">September 2013</a></li>
+            <li><a href="#">August 2013</a></li>
+            <li><a href="#">July 2013</a></li>
+            <li><a href="#">June 2013</a></li>
+            <li><a href="#">May 2013</a></li>
+            <li><a href="#">April 2013</a></li>
+          </ol>
+        </div>
+			</div>
+		</div>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+		{{ parent() }}
+
+		{#No permitir al usuario ir a la pagina anterior#}
+		{% if app.user %}
+			<script type="text/javascript">
+				if(history.forward())
+				{
+					location.replace( history.forward() );
+				}
+			</script>
+		{% endif %}
+
 {% endblock %}
