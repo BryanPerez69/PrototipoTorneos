@@ -8,6 +8,13 @@
   }
 }
 
+body {
+  background-color: #dee6e7;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+
 
 h1, .h1,
 h2, .h2,
@@ -15,8 +22,8 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: "Helvetica Neue", Helvetica, Arial, serif;
+  font-weight: bold;
   color: #333;
 }
 
@@ -28,7 +35,72 @@ h6, .h6 {
 .container {
   padding: 20px;
   max-width: 60rem;
+  background-color: #ffffff;
 }
+
+.col-md-8 {
+  padding: 20px;
+  background-color: #ffffff;
+}
+.post {
+  padding: 5px 10px 20px 20px;
+  margin-top: 10px;
+  background-color: #ffffff;
+  border-left: 7px inset #2785ba;
+  border-right: 7px outset #2785ba;
+  border-top: 1px outset #646869;
+  border-bottom: 1px outset #646869;
+  border-radius: 3px;
+  -webkit-box-shadow: 5px 5px 5px #999;
+  -moz-box-shadow: 5px 5px 5px #999;
+}
+.post .estado {
+  padding: 0px;
+  margin: 0 auto;
+  text-align: right;
+  font-size: 12px;
+  font-family: "Tahoma", "Geneva", sans-serif;
+}
+.post .torneo-header {
+  text-decoration: none;
+  font-style: none;
+  font-weight: none;
+  font-variant: none;
+  font-size: 16px;
+  color: #5e5e5e;
+}
+.post .post-info {
+  padding: 0px;
+  margin-top: -10px;
+  font-weight: bold;
+  font-size: 12px;
+  font-family: "Tahoma", "Geneva", sans-serif;
+}
+.post .post-thumbnail {
+  padding: 10px;
+  margin: 0 auto;
+  float: left;
+  width: 250px;
+}
+.post .blockquote {
+  padding-left: 250px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  font-size: 15px;
+  text-align: inherit;
+}
+.post .blockquote .post-date{
+  margin-top: 20px;
+}
+.post .enlace {
+  padding: 10px;
+  text-align: right;
+  font-size: 16px;
+  font-family: "Tahoma", "Geneva", sans-serif;
+}
+
 
 
 /* Sidebar modules for boxing content */

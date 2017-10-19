@@ -11,9 +11,65 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<h2>Torneos actuales</h2>
-				<div class="col-md-6">
-
+				<h2 class="h2-portada">Torneos actuales</h2>
+				<p></p>
+				<div class="post post-1">
+					<div class="estado">
+						<span class="badge badge-primary">COMENZADO</span>
+					</div>
+					<a target="_blank" class="h5 torneo-header" href="https://app.doleague.com/es/championship/NUcf6qEAtUqVd2uWwhNr"
+						tittle="Ir a LIGA FUTSAL PRUEBA">
+						<h5>LIGA FUTSAL PRUEBA</h5>
+					</a>
+					<div class="post-info">
+						<p>Publicado el: <span class="date">19 Octubre, 2017</span></p>
+					</div>
+					<a target="_blank" href="https://app.doleague.com/es/championship/NUcf6qEAtUqVd2uWwhNr" title="LIGA FUTSAL PRUEBA">
+						<img class="post-thumbnail" src="{{ asset('images/cartel-futsal.jpg') }}" alt="LIGA FUTSAL PRUEBA">
+					</a>
+					<p></p>
+					<blockquote class="blockquote">
+  					<p class="mb-0">Campeonato de prueba para demostrar mediante la guía de proceso la creación y gestión de campeonatos</p>
+						<div class="post-date">
+							<p class="mb-0"><b>Fecha de inicio: </b><span class="date">09/09/2017</span></p>
+							<p class="mb-0"><b>Fecha de finalización: </b><span class="date">05/11/2017</span></p>
+						</div>
+					</blockquote>
+					<div class="enlace">
+						<a target="_blank" href="https://app.doleague.com/es/championship/NUcf6qEAtUqVd2uWwhNr" tittle="Ir a LIGA FUTSAL PRUEBA">
+							Ver torneo
+						</a>
+						<p></p>
+					</div>
+				</div>
+				<div class="post post-1">
+					<div class="estado">
+						<span class="badge badge-primary">COMENZADO</span>
+					</div>
+					<a target="_blank" class="h5 torneo-header" href="https://app.doleague.com/es/championship/NUcf6qEAtUqVd2uWwhNr"
+						tittle="Ir a LIGA FUTSAL PRUEBA">
+						<h5>LIGA FUTSAL PRUEBA</h5>
+					</a>
+					<div class="post-info">
+						<p>Publicado el: <span class="date">19 Octubre, 2017</span></p>
+					</div>
+					<a target="_blank" href="https://app.doleague.com/es/championship/NUcf6qEAtUqVd2uWwhNr" title="LIGA FUTSAL PRUEBA">
+						<img class="post-thumbnail" src="{{ asset('images/cartel-futsal.jpg') }}" alt="LIGA FUTSAL PRUEBA">
+					</a>
+					<p></p>
+					<blockquote class="blockquote">
+  					<p class="mb-0">Campeonato de prueba para demostrar mediante la guía de proceso la creación y gestión de campeonatos</p>
+						<div class="post-date">
+							<p class="mb-0"><b>Fecha de inicio: </b><span class="date">09/09/2017</span></p>
+							<p class="mb-0"><b>Fecha de finalización: </b><span class="date">05/11/2017</span></p>
+						</div>
+					</blockquote>
+					<div class="enlace">
+						<a target="_blank" href="https://app.doleague.com/es/championship/NUcf6qEAtUqVd2uWwhNr" tittle="Ir a LIGA FUTSAL PRUEBA">
+							Ver torneo
+						</a>
+						<p></p>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-3 offset-sm-1 blog-sidebar">
@@ -22,20 +78,13 @@
           <p>Espacio para generar carnet y subir foto</p>
         </div>
         <div class="sidebar-module">
-          <h4>Archives</h4>
+          <h4>Torneos por fechas</h4>
           <ol class="list-unstyled">
-            <li><a href="#">March 2014</a></li>
-            <li><a href="#">February 2014</a></li>
-            <li><a href="#">January 2014</a></li>
-            <li><a href="#">December 2013</a></li>
-            <li><a href="#">November 2013</a></li>
-            <li><a href="#">October 2013</a></li>
-            <li><a href="#">September 2013</a></li>
-            <li><a href="#">August 2013</a></li>
-            <li><a href="#">July 2013</a></li>
-            <li><a href="#">June 2013</a></li>
-            <li><a href="#">May 2013</a></li>
-            <li><a href="#">April 2013</a></li>
+            <li><a href="#">Agosto 2017</a></li>
+            <li><a href="#">Septiembre 2017</a></li>
+            <li><a href="#">Octubre 2017</a></li>
+            <li><a href="#">Noviembre 2017</a></li>
+            <li><a href="#">Diciembre 2017</a></li>
           </ol>
         </div>
 			</div>
@@ -45,15 +94,4 @@
 
 {% block javascripts %}
 		{{ parent() }}
-
-		{#No permitir al usuario ir a la pagina anterior#}
-		{% if app.user %}
-			<script type="text/javascript">
-				if(history.forward())
-				{
-					location.replace( history.forward() );
-				}
-			</script>
-		{% endif %}
-
 {% endblock %}

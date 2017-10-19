@@ -34,9 +34,9 @@ security:
             target: /
             invalidate_session: false
             delete_cookies:
-              a: { path: null, domain: null}
-              b: { path: null, domain: null}
-
+              name:
+                path: null
+                domain: null
           remember_me:
                 secret:   '%secret%'
                 lifetime: 604800 # 1 week in seconds

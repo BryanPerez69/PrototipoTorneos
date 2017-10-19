@@ -1,8 +1,11 @@
 .navbar{
-  color: #0000FF;
+  background-color: #076385;
   height: 100px;
 }
-.collapse navbar-collapse{
+.collapse .navbar-collapse{
   max-width: 300px;
   margin: 0 auto;
+}
+.collapse .navbar-collapse .salir {
+  text-align: right;
 }
