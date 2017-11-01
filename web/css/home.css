@@ -10,7 +10,7 @@
 
 body {
   background-color: #dee6e7;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Libre Franklin", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #333;
 }
@@ -22,7 +22,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, serif;
+  font-family: "PT Sans Caption", Helvetica, Arial, serif;
   font-weight: bold;
   color: #333;
 }

@@ -38,6 +38,22 @@ class User  implements AdvancedUserInterface, \Serializable
     /**
      * @var string
      *
+     * @ORM\Column(name="empresa", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $empresa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nit", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $nit;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="email", type="string", length=255, nullable=false, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
@@ -71,6 +87,9 @@ class User  implements AdvancedUserInterface, \Serializable
        * @ORM\Column(name="is_active", type="boolean", options={"default" = "1"})
        */
       private $isActive;
+
+
+
 
 #################################
 ####### GETTERS Y SETTERS########
@@ -111,6 +130,54 @@ class User  implements AdvancedUserInterface, \Serializable
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param string $empresa
+     *
+     * @return User
+     */
+    public function setEmpresa($empresa)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return string
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+
+    /**
+     * Set nit
+     *
+     * @param string $nit
+     *
+     * @return User
+     */
+    public function setNit($nit)
+    {
+        $this->nit = $nit;
+
+        return $this;
+    }
+
+    /**
+     * Get nit
+     *
+     * @return string
+     */
+    public function getNit()
+    {
+        return $this->nit;
     }
 
     /**
@@ -172,52 +239,52 @@ class User  implements AdvancedUserInterface, \Serializable
     }
 
     /**
-         * Set role
-         *
-         * @param string $role
-         *
-         * @return User
-         */
-        public function setRole($role)
-        {
-            $this->role = $role;
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
 
-            return $this;
-        }
+        return $this;
+    }
 
-        /**
-         * Get role
-         *
-         * @return string
-         */
-        public function getRole()
-        {
-            return $this->role;
-        }
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
 
-        /**
-         * Set isActive
-         *
-         * @param boolean $isActive
-         *
-         * @return User
-         */
-        public function setIsActive($isActive)
-        {
-            $this->isActive = $isActive;
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return User
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
 
-            return $this;
-        }
+        return $this;
+    }
 
-        /**
-         * Get isActive
-         *
-         * @return bool
-         */
-        public function getIsActive()
-        {
-            return $this->isActive;
-        }
+    /**
+     * Get isActive
+     *
+     * @return bool
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
 
     public function getSalt()
     {

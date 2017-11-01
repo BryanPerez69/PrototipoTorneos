@@ -1,0 +1,129 @@
+body {
+  padding-top: 0px;
+  padding-bottom: 40px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #dee6e7;
+  font-family: "Libre Franklin", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: "PT Sans Caption", Helvetica, Arial, serif;
+  font-weight: bold;
+  color: #333;
+}
+
+/*---------------------------------MISION-------------------------------------*/
+
+.mision {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/*---------------------------------LOGIN--------------------------------------*/
+
+.form-signin {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+/*.form-register {
+  max-width: 250px;
+  padding: 5px;
+  margin: 0 auto;
+}*/
+
+
+/*------------------------------------REGISTRO--------------------------------*/
+
+.form-group {
+  align: center;
+  padding-top: 100px;
+  padding-bottom: 40px;
+  max-width: 750px;
+  margin: 0 auto;
+}
+.form-group .form-register-heading {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.form-group .checkbox {
+  font-weight: normal;
+}
+.form-group .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 0px;
+  font-size: 16px;
+}
+
+
+.form-group .form-control:focus {
+  z-index: 5;
+}
+.form-group input[type="text"] {
+  margin-top: 2px;
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-group input[type="email"] {
+  margin-top: 2px;
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-group input[type="password"] {
+  margin-top: 2px;
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-group .form-boton {
+  max-width: 200px;
+  padding: 20px;
+  margin: 0 auto;
+}

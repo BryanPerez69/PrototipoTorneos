@@ -1,0 +1,127 @@
+{% extends 'externo/layout_ex.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+          <!-- Custom styles for this template -->
+          <link href="{{ asset('css/index.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+  {{ parent() }}
+
+    <div class="row">
+      <div class="container">
+        <div class="mision">
+          <blockquote class="blockquote">
+            <h2>COMPETICIONES DEPORTIVAS Y RECREATIVAS DE COMFAMILIAR RISARALDA</h2>
+          </blockquote>
+          <p style="text-align:left">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p style="text-align:left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- login-->
+    <div class="row">
+      <div class="container">
+
+        <form class="form-signin" action="{{ path('login_check') }}" method="post">
+            <h2 class="form-signin-heading">Iniciar Sesión</h2>
+            <label for="username" class="sr-only">Usuario:</label>
+            <input type="text" id="username" name="_username" class="form-control"
+              value="{{ last_username }}", autocomplete="off"  placeholder="Usuario" required autofocus/>
+            <label for="password" class="sr-only">Contraseña:</label>
+            <input type="password" id="password" name="_password" class="form-control"  placeholder="Contraseña" required/>
+
+            {% if error %}
+                <div>
+                    <p style="color:red;"><i>*El usuario o contraseña son invalidos</i></p>
+                </div>
+                {#<div>{ error.messageKey|trans(error.messageData, 'security') }</div>#}
+            {% endif %}
+
+
+            {#
+                If you want to control the URL the user
+                is redirected to on success (more details below)
+                <input type="hidden" name="_target_path" value="/account" />
+            #}
+
+            {#
+            <input type="checkbox" id="remember_me" name="_remember_me" unchecked />
+            <label for="remember_me">Recordarme</label>
+            #}
+            <input type="hidden" name="_target_path" value="homepage" />
+
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+        </form>
+
+        <!-- <form class="form-register" action="{ path('user_registration') }}" method="post">
+          <h5 class="form-signin-heading">¡No tienes una cuenta!</h5>
+          <button type="submit" class="btn btn-small btn-primary btn-block">Registrarse</button>
+        </form> -->
+
+
+      </div> <!-- /container -->
+    </div><!-- /row login -->
+
+
+    <!-- registro-->
+    <div class="row">
+      <div class="container">
+        <div class="form-group" method="post">
+
+          <h2 class='form-register-heading'>Crear cuenta</h2><br>
+          {{ form_start(form, { 'attr' : {'role' : 'form' } }) }}
+
+            <div class="row">
+              <div class="form-left col-md-6">
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Nombre de usuario', 'autofocus': 'true'}} ) }}
+                <span class="text_danger">{{ form_errors(form.username) }}</span>
+
+                {{ form_label(form.empresa) }}
+                {{ form_widget(form.empresa, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off',
+                'placeholder': 'Nombre de la Empresa'}} ) }}
+                <span class="text_danger">{{ form_errors(form.empresa) }}</span>
+
+
+
+                {{ form_label(form.nit) }}
+                {{ form_widget(form.nit, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Nit de la Empresa',
+                'pattern': '[0-9]{9}', 'title': 'Este campo debe tener exactamente 9 digitos'}} ) }}
+                <span class="text_danger">{{ form_errors(form.nit) }}</span>
+              </div>
+
+
+              <div class="form-right col-md-6">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'correo@ejemplo.com' }} ) }}
+                <span class="text_danger">{{ form_errors(form.email) }}</span>
+
+
+
+                {{ form_label(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Escriba la contraseña' }} ) }}
+                <span class="text_danger">{{ form_errors(form.plainPassword.first) }}</span>
+
+
+
+                {{ form_label(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Escriba de nuevo la contraseña' }} ) }}
+                <span class="text_danger">{{ form_errors(form.plainPassword.second) }}</span>
+              </div>
+            </div>
+
+            <div class="form-boton">
+              {{ form_widget(form.guardar, { 'label': 'Crear usuario', 'attr' : { 'class': 'btn btn-md btn-primary btn-block'}} ) }}
+              {{ form_widget(form.borrar, { 'label': 'Limpiar', 'attr' : { 'class': 'btn btn-md btn-secondary btn-block'}} ) }}
+            </div>
+
+         {{ form_end(form) }}
+       </div>
+      </div><!-- /container-->
+    </div><!-- /row register -->
+
+
+{% endblock %}

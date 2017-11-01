@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class UserType extends AbstractType
 {
@@ -22,6 +23,8 @@ class UserType extends AbstractType
     {
       $builder
       ->add('username', TextType::class, array('label' => 'Usuario'))
+      ->add('empresa', TextType::class, array('label' => 'Empresa') )
+      ->add('nit', TextType::class, array('label' => 'NIT'))
       ->add('email', EmailType::class)
       ->add('plainPassword', RepeatedType::class, array(
               'type' => PasswordType::class,
