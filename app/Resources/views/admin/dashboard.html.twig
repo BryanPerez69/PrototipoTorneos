@@ -1,0 +1,20 @@
+{% extends 'admin/layout_admin.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Custom styles for this template -->
+	<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+	<div class="container">
+		<br>
+		<h1 align="center">Sistema de adminitracion</h1>
+		<a href="{{ path('gestion_usuarios') }}">Usuarios</a>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+		{{ parent() }}
+{% endblock %}

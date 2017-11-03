@@ -6,10 +6,6 @@ homepage:
     path:     /home
     defaults: { _controller: AppBundle:User:home }
 
-user_registration:
-    path:     /register
-    defaults: { _controller: AppBundle:User:register }
-
 index:
     path:     /
     defaults: { _controller: AppBundle:User:index }
@@ -20,3 +16,11 @@ login_check:
 
 logout:
     path: /logout
+
+administrator:
+    path: /admin
+    defaults: {_controller: AppBundle:Admin:principal }
+
+gestion_usuarios:
+    path: /admin/usuarios
+    defaults: {_controller: AppBundle:Admin:userManagement }

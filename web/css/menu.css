@@ -2,6 +2,10 @@
   background-color: #076385;
   height: 100px;
 }
+.header{
+  padding: 20px;
+  max-width: 60rem;
+}
 .collapse .navbar-collapse{
   max-width: 300px;
   margin: 0 auto;

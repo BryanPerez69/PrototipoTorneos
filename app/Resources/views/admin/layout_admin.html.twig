@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="Last-Modified" content="0">
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+        <meta http-equiv="cache-control" content="no-cache"/>
+        <title>{% block title %}Torneos{% endblock %}</title>
+        {% block stylesheets %}
+          <!-- Bootstrap core CSS -->
+          <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+          <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+      {% block body %}
+        {{ include('admin/menu.html.twig') }}
+      {% endblock %}
+      {% block javascripts %}
+
+      {#No permitir al usuario ir a la pagina anterior#}
+      <script language="JavaScript">
+        //Actualizar una vez al cargar página
+        window.onunload = sale
+        var valor;
+        if(document.cookie){
+          galleta = unescape(document.cookie)
+          galleta = galleta.split(';')
+          for(m=0; m<galleta.length; m++){
+              if(galleta[m].split('=')[0] == "recarga"){
+              valor = galleta[m].split('=')[1]
+              break;
+              }
+          }
+          if(valor == "sip"){
+            document.cookie = "recarga=nop";
+            window.onunload = function(){}
+            document.location.reload()
+          }
+          else{
+          window.onunload=sale
+            }
+        }
+
+        function sale(){
+        document.cookie ="recarga=sip"
+        }
+      </script>
+
+          <!-- Bootstrap core JavaScript
+          ================================================== -->
+          <!-- Placed at the end of the document so the pages load faster -->
+          <script> window.jQuery || document.write('<script src="{{ asset('js/jquery-slim.min.js') }}"><\/script>')</script>
+          <script src="{{ asset('js/popper.min.js') }}" ></script>
+          <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+          <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+          <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
+          <script src="{{ asset('js/ie-emulation-modes-warning.js') }}"></script>
+      {% endblock %}
+    </body>
+</html>

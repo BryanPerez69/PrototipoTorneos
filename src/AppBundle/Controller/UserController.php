@@ -18,7 +18,21 @@ class UserController extends Controller
     */
   public function homeAction()
   {
-    return $this->render('interno/home.html.twig');
+    //Acceso para usuario
+    if($this->isGranted("ROLE_USER"))
+    {
+      return $this->render('usuario/home.html.twig');
+    }
+    //Acceso para administrador
+    elseif ($this->isGranted("ROLE_ADMIN"))
+    {
+      return $this->render('admin/dashboard.html.twig');
+    }
+    //No hay ingreso
+    elseif ($this->isGranted("IS_AUTHENTICATED_ANONYMOUSLY"))
+    {
+      return $this->redirectToRoute('index');
+    }
   }
 
 
@@ -76,7 +90,7 @@ class UserController extends Controller
            return $this->redirectToRoute('logout');
           }
 
-          return $this->render('externo/index.html.twig', array(
+          return $this->render('index/index.html.twig', array(
               'last_username' => $lastUsername,
               'error'         => $error,
               'form'          => $form->createView(),

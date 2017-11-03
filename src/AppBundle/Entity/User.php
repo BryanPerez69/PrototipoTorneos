@@ -76,7 +76,7 @@ class User  implements AdvancedUserInterface, \Serializable
   /**
        * @var string
        *
-       * @ORM\Column(name="role", type="string", length=100, options={"default" = "ROLE_USER"})
+       * @ORM\Column(name="role", type="string", length=50, columnDefinition="ENUM('ROLE_ADMIN', 'ROLE_USER')")
        *
        */
       private $role;
@@ -310,7 +310,7 @@ class User  implements AdvancedUserInterface, \Serializable
            $this->id,
            $this->username,
            $this->password,
-           //$this->isActive
+           $this->isActive
        ));
    }
    /** @see \Serializable::unserialize() */
@@ -320,7 +320,7 @@ class User  implements AdvancedUserInterface, \Serializable
            $this->id,
            $this->username,
            $this->password,
-           //$this->isActive
+           $this->isActive
        ) = unserialize($serialized);
    }
 

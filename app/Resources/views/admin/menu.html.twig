@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="header container">
+    <a class="navbar-brand" href= "{{ path('homepage') }}">
+      <img src="{{ asset('images/logo_recreacion-01.png') }}" width="260" height="85" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ path('homepage') }}">
+            <font size=5>Bienvenido {{ app.user.username }} </font> <span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+      <a class="nav-link text-light align-middle mb-3 mb-md-0 ml-md-3" href="{{ path('logout')}}">Salir</a>
+    </div>
+  </div>
+</nav>

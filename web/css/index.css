@@ -24,7 +24,7 @@ h6, .h6 {
 
 .mision {
   padding-top: 100px;
-  padding-bottom: 40px;
+  padding-bottom: 100px;
   text-align: center;
   max-width: 750px;
   margin: 0 auto;
@@ -34,7 +34,7 @@ h6, .h6 {
 
 .form-signin {
   padding-top: 100px;
-  padding-bottom: 40px;
+  padding-bottom: 100px;
   max-width: 300px;
   margin: 0 auto;
 }
@@ -79,7 +79,7 @@ h6, .h6 {
 .form-group {
   align: center;
   padding-top: 100px;
-  padding-bottom: 40px;
+  padding-bottom: 100px;
   max-width: 750px;
   margin: 0 auto;
 }
