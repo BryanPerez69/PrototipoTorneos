@@ -8,11 +8,11 @@ homepage:
 
 index:
     path:     /
-    defaults: { _controller: AppBundle:User:index }
+    defaults: { _controller: AppBundle:Index:index }
 
 login_check:
     path: /login_check
-    defaults: { _controller: AppBundle:User:loginCheck }
+    defaults: { _controller: AppBundle:Index:loginCheck }
 
 logout:
     path: /logout

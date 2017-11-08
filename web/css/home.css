@@ -12,6 +12,7 @@ body {
   background-color: #dee6e7;
   font-family: "Libre Franklin", Helvetica, Arial, sans-serif;
   font-weight: normal;
+  text-rendering: optimizeLegibility;
   color: #333;
 }
 
@@ -22,8 +23,9 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: "PT Sans Caption", Helvetica, Arial, serif;
+  font-family: "PT Sans Caption", Helvetica, Arial, sans-serif;
   font-weight: bold;
+  text-rendering: optimizeLegibility;
   color: #333;
 }
 
@@ -34,16 +36,18 @@ h6, .h6 {
 
 .contenedor {
   padding: 20px;
-  max-width: 60rem;
+  max-width: 60%;
   background-color: #ffffff;
 }
 
-.col-md-8 {
+.col-md-12 {
   padding: 20px;
+  max-width: 80%;
   background-color: #ffffff;
 }
 .post {
   padding: 5px 10px 20px 20px;
+  height: 400px;
   margin-top: 10px;
   background-color: #ffffff;
   border-left: 7px inset #2785ba;
@@ -54,20 +58,15 @@ h6, .h6 {
   -webkit-box-shadow: 5px 5px 5px #999;
   -moz-box-shadow: 5px 5px 5px #999;
 }
-.post .estado {
-  padding: 0px;
-  margin: 0 auto;
-  text-align: right;
-  font-size: 12px;
-  font-family: "Tahoma", "Geneva", sans-serif;
-}
 .post .torneo-header {
   text-decoration: none;
   font-style: none;
   font-weight: none;
   font-variant: none;
-  font-size: 16px;
   color: #5e5e5e;
+}
+.post .cartel{
+  height: 255px;
 }
 .post .post-info {
   padding: 0px;
@@ -77,26 +76,39 @@ h6, .h6 {
   font-family: "Tahoma", "Geneva", sans-serif;
 }
 .post .post-thumbnail {
-  padding: 10px;
   margin: 0 auto;
   float: left;
-  width: 250px;
+  max-width: 188px;
+  max-height: 255px;
 }
-.post .blockquote {
-  padding-left: 250px;
-  padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: 0 auto;
+.post .mas-info{
+  height: 255px;
+}
+.post .descripcion {
+  padding-right: 10%;
+  padding-bottom: 5%;
+  margin-left: -5%;
   font-size: 15px;
   text-align: inherit;
 }
-.post .blockquote .post-date{
-  margin-top: 20px;
+.post .tournament-date{
+  margin-bottom: 5%;
+  margin-left: -5%;
+  font-size: 15px;
+  text-align: inherit;
 }
-.post .enlace {
-  padding: 10px;
-  text-align: right;
+.post .enlaces{
+  padding: 1%;
+}
+.post .enlaces .btn-sm {
+  text-decoration: none;
+  font-style: none;
+  margin: 0.8%;
+  font-size: 16px;
+  font-family: "Tahoma", "Geneva", sans-serif;
+}
+.post .carnet {
+  padding-left: 12%;
   font-size: 16px;
   font-family: "Tahoma", "Geneva", sans-serif;
 }

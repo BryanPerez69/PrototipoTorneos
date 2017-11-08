@@ -24,9 +24,9 @@ class AdminController extends Controller
     */
   public function userManagementAction()
   {
-    $doc = $this->getDoctrine()->getManager();
+    $em = $this->getDoctrine()->getManager();
 
-    $users = $doc->getRepository('AppBundle:User')->findAll();
+    $users = $em->getRepository('AppBundle:User')->findAll();
 
     return $this->render('admin/usuarios.html.twig', array('users' => $users));
   }
