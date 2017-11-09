@@ -1,0 +1,26 @@
+{% extends 'usuario/layout.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Custom styles for this template -->
+  <link href="{{ asset('css/carnet.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+   {{ parent() }}
+   <div class="contenedor container">
+     <div class="row justify-content-md-center">
+       <div class="col-md-10">
+         <h2 align="center">Crear Carnet</h2>
+         <p></p>
+       </div>
+     </div>
+   </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+		{{ parent() }}
+{% endblock %}

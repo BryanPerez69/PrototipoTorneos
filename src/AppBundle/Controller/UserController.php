@@ -34,4 +34,12 @@ class UserController extends Controller
     }
   }
 
+  /**
+   * @Route("/carnet", name="carnet")
+   */
+  public function carnetAction()
+  {
+    return $this->render('usuario/carnet.html.twig');
+  }
+
 }

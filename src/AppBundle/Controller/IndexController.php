@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 class IndexController extends Controller
 {
 
-  
+
    /**
      * @Route("/", name="index")
      */

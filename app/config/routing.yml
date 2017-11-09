@@ -24,3 +24,7 @@ administrator:
 gestion_usuarios:
     path: /admin/usuarios
     defaults: {_controller: AppBundle:Admin:userManagement }
+
+carnet:
+    path: /carnet
+    defaults: {_controller: AppBundle:User:carnet }

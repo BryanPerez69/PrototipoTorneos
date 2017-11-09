@@ -33,33 +33,14 @@ h6, .h6 {
 /*
  * Override Bootstrap's default container.
  */
- /* principio Cuando se fija el menu*/
- .menu-fixed{
-   position: fixed;
-   top:0;
- }
 
- .side-menu{
-   margin-top: 1em;
-   margin-left: 17%;
-   display: flex;
-   justify-content: right;
-   float: left;
-   text-align: center;
-   overflow: hidden;
-   z-index: 999;
- }
 .contenedor {
   padding: 20px;
   max-width: 60%;
+  background-color: #ffffff;
 }
-/* Cuando no se fija el menu*/
-.non-fixed{
-  position: absolute;
-  margin-left: -0.9%;
-  max-width: 988px;
-}
-.zona-posts {
+
+.col-md-12 {
   padding: 20px;
   max-width: 80%;
   background-color: #ffffff;
@@ -117,7 +98,7 @@ h6, .h6 {
   text-align: inherit;
 }
 .post .enlaces{
-  padding: 1.5%;
+  padding: 1%;
 }
 .post .enlaces .btn-sm {
   text-decoration: none;
@@ -127,7 +108,7 @@ h6, .h6 {
   font-family: "Tahoma", "Geneva", sans-serif;
 }
 .post .carnet {
-  padding-left: 5%;
+  padding-left: 15%;
   font-size: 16px;
   font-family: "Tahoma", "Geneva", sans-serif;
 }
