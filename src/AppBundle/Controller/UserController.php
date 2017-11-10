@@ -4,6 +4,9 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Torneos;
+use AppBundle\Entity\TipoTorneo;
 
 class UserController extends Controller
 {
@@ -32,6 +35,25 @@ class UserController extends Controller
     {
       return $this->redirectToRoute('index');
     }
+  }
+
+  /**
+   * @Route("/torneo/{section}", name="torneo_section")
+   */
+  public function torneoSectionAction($section){
+
+    $em = $this->getDoctrine()->getManager();
+
+    $query = "SELECT t FROM AppBundle:Torneos t JOIN t.deporte a WHERE a.descripcion = 'baloncesto'";
+
+    $torneos_section = $em->createQuery($query);
+
+    /*$torneos_section = $em->getRepository('AppBundle:Torneos')->findBy(array('deporte' => 2));*/
+
+    //return new Response($torneos_section->getResult());
+
+    return $this->render('usuario/torneos_section.html.twig', array('torneos_section' => $torneos_section));
+
   }
 
   /**

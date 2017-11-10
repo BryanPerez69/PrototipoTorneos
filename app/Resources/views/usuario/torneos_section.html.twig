@@ -9,11 +9,11 @@
 {% block body %}
 	{{ parent() }}
 
-	<div class="container-fluid content-main">
+  <div class="container-fluid content-main">
 		{#----------------------------MENU PARA FILTRO------------------------------#}
 		<div class="side-menu">
 			<nav class="nav flex-column">
-				<a class="btn nav-link boton-activo" href="{{ path('homepage') }}">Principal</a></li>
+        <a class="btn nav-link boton" href="{{ path('homepage') }}">Principal</a></li>
         <a id="futbol"         class="btn nav-link boton" href="{{ path('torneo_section', {'section' : 'futbol' }) }}">Futbol</a>
         <a id="futsal"         class="btn nav-link boton" href="{{ path('torneo_section', {'section' : 'futsal' }) }}">Futsal</a>
         <a id="baloncesto"     class="btn nav-link boton" href="{{ path('torneo_section', {'section' : 'baloncesto' }) }}">Baloncesto</a>
@@ -24,17 +24,17 @@
         <a id="natacion"       class="btn nav-link boton" href="{{ path('torneo_section', {'section' : 'natacion' }) }}">Natacion</a>
         <a id="bolos"          class="btn nav-link boton" href="{{ path('torneo_section', {'section' : 'bolos' }) }}">Bolos</a>
         <a id="sapo"           class="btn nav-link boton" href="{{ path('torneo_section', {'section' : 'sapo' }) }}">Sapo</a>
-			</nav>	
+			</nav>
 		</div>
 
-		{#---------------------------CONTENIDO DE LA PAGINA-------------------------#}
+    {#---------------------------CONTENIDO DE LA PAGINA-------------------------#}
 		<div class="contenedor container-fluid">
 			<div class="row justify-content-md-center">
 				<div class="zona-posts col-md-10">
 					<h2 align="center" class="h2-portada">Torneos Vigentes</h2>
 					<p></p>
 
-					{% for torneo in torneos | reverse %}
+					{% for torneo in torneos_section | reverse %}
 						<div class="post">
 							<p></p>
 							<a target="_blank" class="h5 torneo-header" href="{{ torneo.urlTorneo }}"
@@ -88,10 +88,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+  </div>
 
 {% endblock %}
 
 {% block javascripts %}
-		{{ parent() }}
+  {{ parent() }}
 {% endblock %}

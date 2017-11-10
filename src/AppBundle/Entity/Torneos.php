@@ -17,7 +17,7 @@ class Torneos
      *@ORM\ManyToOne(targetEntity="TipoTorneo", inversedBy="tipo")
      *@ORM\JoinColumn(name="tipo_id", referencedColumnName="id", onDelete="CASCADE" )
     */
-    protected $deporte;
+    private $deporte;
 
     /**
      * @var int

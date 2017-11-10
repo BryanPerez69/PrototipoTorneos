@@ -29,39 +29,46 @@ h6, .h6 {
   color: #333;
 }
 
-
 /*
  * Override Bootstrap's default container.
  */
- /* principio Cuando se fija el menu*/
- .menu-fixed{
-   position: fixed;
-   top:0;
- }
+.content-main{
+  max-width: 70%;
+}
 
- .side-menu{
+ /* principio Cuando se fija el menu*/
+.menu-fixed{
+   position: sticky;
+   top:15px;
+}
+.side-menu{
    margin-top: 1em;
-   margin-left: 17%;
    display: flex;
-   justify-content: right;
+   justify-content: center;
    float: left;
    text-align: center;
    overflow: hidden;
    z-index: 999;
- }
+}
+.boton-activo{
+  color:#fff;
+  background-color:#007bff;
+  margin: 1%;
+  box-sizing: border-box;
+}
+.boton{
+  border-color:#007bff;
+  margin: 1%;
+  box-sizing: border-box;
+}
 .contenedor {
   padding: 20px;
-  max-width: 60%;
-}
-/* Cuando no se fija el menu*/
-.non-fixed{
-  position: absolute;
-  margin-left: -0.9%;
-  max-width: 988px;
+  max-width: 80%;
+
 }
 .zona-posts {
   padding: 20px;
-  max-width: 80%;
+  max-width: 100%;
   background-color: #ffffff;
 }
 .post {
@@ -130,22 +137,4 @@ h6, .h6 {
   padding-left: 5%;
   font-size: 16px;
   font-family: "Tahoma", "Geneva", sans-serif;
-}
-
-
-
-/* Sidebar modules for boxing content */
-.sidebar-module {
-  padding: 1rem;
-  /*margin: 0 -1rem 1rem;*/
-}
-.sidebar-module-inset {
-  padding: 1rem;
-  background-color: #f5f5f5;
-  border-radius: .25rem;
-}
-.sidebar-module-inset p:last-child,
-.sidebar-module-inset ul:last-child,
-.sidebar-module-inset ol:last-child {
-  margin-bottom: 0;
 }

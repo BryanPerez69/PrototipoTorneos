@@ -28,3 +28,7 @@ gestion_usuarios:
 carnet:
     path: /carnet
     defaults: {_controller: AppBundle:User:carnet }
+
+torneo_section:
+    path: /torneo/{section}
+    defaults: {_controller: AppBundle:User:torneoSection}

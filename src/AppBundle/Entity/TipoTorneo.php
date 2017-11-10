@@ -18,7 +18,7 @@ class TipoTorneo
    /**
     * @ORM\OneToMany(targetEntity="Torneos", mappedBy="deporte")
     */
-    protected $tipo;
+    private $tipo;
 
     /**
      * @var int
@@ -42,6 +42,10 @@ class TipoTorneo
       $this->tipo = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+      return $this->descripcion;
+    }
 
     ###################################################################
     ###################### GETTERS Y SETTERS ##########################
