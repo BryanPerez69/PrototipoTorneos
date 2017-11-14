@@ -44,9 +44,9 @@ class UserController extends Controller
 
     $em = $this->getDoctrine()->getManager();
 
-    $query = "SELECT t FROM AppBundle:Torneos t JOIN t.deporte a WHERE a.descripcion = 'baloncesto'";
+    $query = "SELECT t FROM AppBundle:Torneos t JOIN AppBundle:TipoTorneo tt WITH t.deporte=tt.id WHERE tt.descripcion = '$section'";
 
-    $torneos_section = $em->createQuery($query);
+    $torneos_section = $em->createQuery($query)->getResult();
 
     /*$torneos_section = $em->getRepository('AppBundle:Torneos')->findBy(array('deporte' => 2));*/
 

@@ -44,7 +44,7 @@ class TipoTorneo
 
     public function __toString()
     {
-      return $this->descripcion;
+      $this->descripcion;
     }
 
     ###################################################################
