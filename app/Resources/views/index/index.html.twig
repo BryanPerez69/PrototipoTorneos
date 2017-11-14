@@ -26,9 +26,9 @@
 
         <form class="form-signin" action="{{ path('login_check') }}" method="post">
             <h2 class="form-signin-heading">Iniciar Sesión</h2>
-            <label for="username" class="sr-only">Usuario:</label>
-            <input type="text" id="username" name="_username" class="form-control"
-              value="{{ last_username }}", autocomplete="off"  placeholder="Usuario" required />
+            <label for="email" class="sr-only">Correo electrónico :</label>
+            <input type="email" id="email" name="_email" class="form-control"
+              value="{{ last_username }}" autocomplete="off"  placeholder="Correo electrónico" required />
             <label for="password" class="sr-only">Contraseña:</label>
             <input type="password" id="password" name="_password" class="form-control"  placeholder="Contraseña" required/>
 
@@ -76,9 +76,9 @@
 
             <div class="row">
               <div class="form-left col-md-6">
-                {{ form_label(form.username) }}
-                {{ form_widget(form.username, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Nombre de usuario'}} ) }}
-                <span class="text_danger">{{ form_errors(form.username) }}</span>
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Nombre de usuario'}} ) }}
+                <span class="text_danger">{{ form_errors(form.name) }}</span>
 
                 {{ form_label(form.empresa) }}
                 {{ form_widget(form.empresa, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off',

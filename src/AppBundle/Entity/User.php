@@ -30,10 +30,10 @@ class User  implements AdvancedUserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $username;
+    private $name;
 
     /**
      * @var string
@@ -109,27 +109,27 @@ class User  implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Set username
+     * Set name
      *
-     * @param string $username
+     * @param string $name
      *
      * @return User
      */
-    public function setUsername($username)
+    public function setName($name)
     {
-        $this->username = $username;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get username
+     * Get name
      *
      * @return string
      */
-    public function getUsername()
+    public function getName()
     {
-        return $this->username;
+        return $this->name;
     }
 
     /**
@@ -200,6 +200,16 @@ class User  implements AdvancedUserInterface, \Serializable
      * @return string
      */
     public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
     {
         return $this->email;
     }
@@ -308,7 +318,7 @@ class User  implements AdvancedUserInterface, \Serializable
    {
        return serialize(array(
            $this->id,
-           $this->username,
+           $this->email,
            $this->password,
            $this->isActive
        ));
@@ -318,7 +328,7 @@ class User  implements AdvancedUserInterface, \Serializable
    {
        list (
            $this->id,
-           $this->username,
+           $this->email,
            $this->password,
            $this->isActive
        ) = unserialize($serialized);

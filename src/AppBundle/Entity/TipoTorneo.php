@@ -36,6 +36,13 @@ class TipoTorneo
      */
     private $descripcion;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", unique=true, length=255)
+     */
+    private $nombre;
+
 
     public function __construct()
     {
@@ -118,5 +125,29 @@ class TipoTorneo
     public function getTipo()
     {
         return $this->tipo;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return TipoTorneo
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 }

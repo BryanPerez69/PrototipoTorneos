@@ -9,7 +9,7 @@ security:
         our_db_provider:
           entity:
             class: AppBundle:User
-            property: username
+            property: email
 
     firewalls:
 
@@ -25,7 +25,7 @@ security:
             login_path: /
             check_path: /login_check
             # field names for the username and password fields:
-            username_parameter: _username
+            username_parameter: _email
             password_parameter: _password
             # default_target_path: default_security_target
             # always_use_default_target_path: true
