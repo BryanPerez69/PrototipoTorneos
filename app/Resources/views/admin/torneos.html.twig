@@ -8,14 +8,5 @@
 
 {% block body %}
 	{{ parent() }}
-	<div class="container">
-		<br>
-		<h1 align="center">Sistema de adminitracion</h1>
-		<a href="{{ path('gestion_usuarios') }}">Usuarios</a>
-		<a href="{{ path('gestion_torneos') }}">Torneos</a>
-	</div>
-{% endblock %}
 
-{% block javascripts %}
-		{{ parent() }}
 {% endblock %}

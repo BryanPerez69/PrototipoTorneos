@@ -2,9 +2,7 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
-homepage:
-    path:     /home
-    defaults: { _controller: AppBundle:User:home }
+
 
 index:
     path:     /
@@ -24,6 +22,19 @@ administrator:
 gestion_usuarios:
     path: /admin/usuarios
     defaults: {_controller: AppBundle:Admin:userManagement }
+
+user_delete:
+    path: /admin/usuarios/delete/{id}
+    defaults: {_controller: AppBundle:Admin:delete}
+    methods: [POST, DELETE]
+
+gestion_torneos:
+    path: /admin/torneos
+    defaults: {_controller: AppBundle:Admin:torneosManagement }
+
+homepage:
+    path:     /home
+    defaults: { _controller: AppBundle:User:home }
 
 carnet:
     path: /carnet
