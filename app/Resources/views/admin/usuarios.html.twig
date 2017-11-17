@@ -3,20 +3,22 @@
 {% block stylesheets %}
 	{{ parent() }}
 	<!-- Custom styles for this template -->
-	<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/admin-area.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
 	{{ parent() }}
+	{{ include('admin/messages/success.html.twig') }}
+	{{ include('admin/messages/danger.html.twig') }}
   <div class="container">
     <div class="col-md-12">
       <div class="page-header">
         <h2  align="center"> Lista de Usuarios</h2>
       </div>
       <div class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table class="table table-hover">
           <thead>
-            <tr class="table-dark">
+            <tr class="table-info">
 							<th>ID</th>
               <th>usuario</th>
               <th>Correo electronico</th>
@@ -27,7 +29,7 @@
           </thead>
           <tbody>
             {% for user in users %}
-              <tr data-id="{{ user.id }}">
+              <tr id="fila" data-id="{{ user.id }}">
 								<td>{{ user.id }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
@@ -40,11 +42,19 @@
                   {% endif %}
                 </td>
                 <td>
-                  <a href="#" class="btn btn-sm btn-primary">Cambiar tipo</a>
-									<a href="#" class="btn btn-sm btn-secondary">Bloquear</a>
-                  <a href="#" class="btn btn-sm btn-danger btn-delete">Eliminar</a>
+                  <a id="boton-editar" href="#" class="btn btn-sm btn-primary">Cambiar tipo</a>
+									<a id="boton-bloquear" href="{{ path('user_block', { id : user.id}) }}" class="btn btn-sm btn-secondary btn-blocked">Bloquear</a>
+                  <a id="boton-eliminar" href="{{ path('user_delete', { id : user.id }) }}" class="btn btn-sm btn-danger btn-delete">Eliminar</a>
                 </td>
               </tr>
+							{% if user.isActive == 0 %}
+								<script language="JavaScript">
+									document.getElementById("fila").classList.add('row-blocked');
+									document.getElementById("boton-editar").classList.add('disabled');
+									document.getElementById("boton-eliminar").classList.add('disabled');
+									document.getElementById("boton-bloquear").innerHTML = "Desbloquear";
+								</script>
+							{% endif %}
             {% endfor %}
           </tbody>
         </table>
@@ -53,6 +63,7 @@
   </div>
 
 	{{ include('admin/delete-user.html.twig', { form: delete_form_ajax, message: '¿Esta seguro que desea eliminar este usuario?', id: 'form-delete'}) }}
+	{{ include('admin/block-user.html.twig', { form: block_form_ajax, message: '¿Esta seguro que desea bloquear este usuario?', id: 'form-block'}) }}
 
 {% endblock %}
 
@@ -60,5 +71,6 @@
 	{{ parent() }}
 
 	<script src="{{ asset('js/delete-user.js') }}"></script>
+	<script src="{{ asset('js/block-user.js') }}"></script>
 
 {% endblock %}

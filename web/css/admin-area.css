@@ -38,6 +38,12 @@ h6, .h6 {
   background-color: #ffffff;
 }
 
+.row-blocked {
+  background-color: #e0e0e0;
+  font-style: italic;
+  color: #8e8e8e;
+}
+
 .col-md-8 {
   padding: 20px;
   background-color: #ffffff;
@@ -75,46 +81,4 @@ h6, .h6 {
   font-weight: bold;
   font-size: 12px;
   font-family: "Tahoma", "Geneva", sans-serif;
-}
-.post .post-thumbnail {
-  padding: 10px;
-  margin: 0 auto;
-  float: left;
-  width: 250px;
-}
-.post .blockquote {
-  padding-left: 250px;
-  padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: 0 auto;
-  font-size: 15px;
-  text-align: inherit;
-}
-.post .blockquote .post-date{
-  margin-top: 20px;
-}
-.post .enlace {
-  padding: 10px;
-  text-align: right;
-  font-size: 16px;
-  font-family: "Tahoma", "Geneva", sans-serif;
-}
-
-
-
-/* Sidebar modules for boxing content */
-.sidebar-module {
-  padding: 1rem;
-  /*margin: 0 -1rem 1rem;*/
-}
-.sidebar-module-inset {
-  padding: 1rem;
-  background-color: #f5f5f5;
-  border-radius: .25rem;
-}
-.sidebar-module-inset p:last-child,
-.sidebar-module-inset ul:last-child,
-.sidebar-module-inset ol:last-child {
-  margin-bottom: 0;
 }

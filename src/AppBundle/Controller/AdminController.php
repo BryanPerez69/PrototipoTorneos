@@ -30,9 +30,11 @@ class AdminController extends Controller
 
     $deleteFormAjax = $this->createCustomForm(':USER_ID', 'DELETE', 'user_delete');
 
+    $blockFormAjax = $this->createCustomForm(':USER_ID', 'PUT', 'user_block');
+
     if($this->isGranted("ROLE_ADMIN"))
     {
-      return $this->render('admin/usuarios.html.twig', array('users' => $users, 'delete_form_ajax' => $deleteFormAjax->createView()));
+      return $this->render('admin/usuarios.html.twig', array('users' => $users, 'delete_form_ajax' => $deleteFormAjax->createView(), 'block_form_ajax'=> $blockFormAjax->createView()));
     }
     //se cierra la sesion al salir al index
     elseif($this->isGranted("IS_AUTHENTICATED_ANONYMOUSLY"))
@@ -63,6 +65,9 @@ class AdminController extends Controller
 
   }
 
+  ##############################################################################
+  #####################ACCIONES PARA BORRAR UN USUARIO##########################
+  ##############################################################################
 
 
   public function deleteAction(Request $request, $id)
@@ -93,11 +98,6 @@ class AdminController extends Controller
           array('content-Type' => 'aplication/json')
         );
       }
-
-      //$res = $this->deleteUser($user->getrole(), $em, $user);
-
-      $this->addFlash($res['alert'], $res['message']);
-      return $this->redirectToRoute('gestion_usuarios');
     }
   }
 
@@ -122,6 +122,86 @@ class AdminController extends Controller
     return array('removed' => $removed, 'message' => $message, 'alert' => $alert);
   }
 
+  ##############################################################################
+  ###################ACCIONES PARA BLOQUEAR UN USUARIO##########################
+  ##############################################################################
+
+  public function blockAction(Request $request, $id)
+  {
+
+    $em = $this->getDoctrine()->getManager();
+
+    $user = $em->getRepository('AppBundle:User')->find($id);
+
+    if(!$user)
+    {
+      throw $this->createNotfoundException('Usuario no encontrado');
+    }
+
+    $form = $this->createCustomForm($user->getId(), 'PUT', 'user_block');
+    $form->handleRequest($request);
+
+    if($form->isSubmitted() && $form->isValid())
+    {
+      //peticion ajax
+      if($request->isXMLHttpRequest())
+      {
+        $res = $this->blockUser($user->getRole(), $user->getIsActive(), $em, $user);
+
+        return new Response(
+          json_encode(array('blocked' => $res['blocked'], 'message' => $res['message'])),
+          200,
+          array('content-Type' => 'aplication/json')
+        );
+      }
+    }
+
+  }
+
+  private function blockUser($role, $isActive, $em, $user)
+  {
+    if($isActive == '1')
+    {
+      if($role == 'ROLE_USER')
+      {
+        $user->setIsActive('0');
+        $em->flush();
+
+        $message = 'El usuario ha sido bloqueado';
+        $blocked = 1;
+        $alert = 'mensaje';
+      }
+      elseif($role == 'ROLE_ADMIN')
+      {
+        $message = 'El usuario no ha sido bloqueado';
+        $blocked = 0;
+        $alert = 'error';
+      }
+    }
+    elseif($isActive == '0')
+    {
+      if($role == 'ROLE_USER')
+      {
+        $user->setIsActive('1');
+        $em->flush();
+
+        $message = 'El usuario ha sido desbloqueado';
+        $blocked = 1;
+        $alert = 'mensaje';
+      }
+      elseif($role == 'ROLE_ADMIN')
+      {
+        $message = 'El usuario no ha sido desbloqueado';
+        $blocked = 0;
+        $alert = 'error';
+      }
+    }
+
+
+    return array('blocked' => $blocked, 'message' => $message, 'alert' => $alert);
+  }
+
+
   private function createCustomForm($id, $method, $route)
   {
     return $this->createFormBuilder()
@@ -129,5 +209,7 @@ class AdminController extends Controller
     ->setMethod($method)
     ->getForm();
   }
+
+
 
 }

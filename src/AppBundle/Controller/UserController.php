@@ -28,7 +28,7 @@ class UserController extends Controller
     //Acceso para administrador
     elseif ($this->isGranted("ROLE_ADMIN"))
     {
-      return $this->render('admin/dashboard.html.twig');
+      return $this->render('admin/admin-area.html.twig');
     }
     //No hay ingreso
     elseif ($this->isGranted("IS_AUTHENTICATED_ANONYMOUSLY"))

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('.btn-delete').click(function(e){
+  $('.btn-blocked').click(function(e){
     e.preventDefault();
 
     var row = $(this).parents('tr');
@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     //alert(id);
 
-    var form = $('#form-delete');
+    var form = $('#form-block');
 
     var url = form.attr('action').replace(':USER_ID', id);
 
@@ -20,9 +20,9 @@ $(document).ready(function(){
       if(res == true)
       {
         $.post(url, data, function(result){
-          if(result.removed == 1)
+          if(result.blocked == 1)
           {
-            row.fadeOut();
+            row.addClass('row-blocked');
             $('#message').removeClass('invisible');
             $('#user-message').text(result.message);
 
