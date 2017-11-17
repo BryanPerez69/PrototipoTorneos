@@ -23,6 +23,9 @@ $(document).ready(function(){
           if(result.blocked == 1)
           {
             row.addClass('row-blocked');
+            $('#boton-editar').addClass('disabled');
+            $('#boton-eliminar').addClass('disabled');
+            $('#boton-bloquear').html('Desbloquear');
             $('#message').removeClass('invisible');
             $('#user-message').text(result.message);
 
