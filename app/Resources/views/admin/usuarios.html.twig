@@ -8,9 +8,9 @@
 
 {% block body %}
 	{{ parent() }}
-	{{ include('admin/messages/success.html.twig') }}
-	{{ include('admin/messages/danger.html.twig') }}
   <div class="container">
+		{{ include('admin/messages/success.html.twig') }}
+		{{ include('admin/messages/danger.html.twig') }}
     <div class="col-md-12">
       <div class="page-header">
         <h2  align="center"> Lista de Usuarios</h2>
@@ -18,7 +18,7 @@
       <div class="table-responsive">
         <table class="table table-hover">
           <thead>
-            <tr class="table-info">
+            <tr class="table-header">
 							<th>ID</th>
               <th>usuario</th>
               <th>Correo electronico</th>
@@ -29,31 +29,48 @@
           </thead>
           <tbody>
             {% for user in users %}
-              <tr id="fila" data-id="{{ user.id }}">
-								<td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.empresa }}</td>
-                <td>
-                  {% if user.role == 'ROLE_ADMIN' %}
-                    <strong>Administrador</strong>
-                  {% elseif user.role == 'ROLE_USER' %}
-                    <strong>Usuario</strong>
-                  {% endif %}
-                </td>
-                <td>
-                  <a id="boton-editar" href="#" class="btn btn-sm btn-primary">Cambiar tipo</a>
-									<a id="boton-bloquear" href="{{ path('user_block', { id : user.id}) }}" class="btn btn-sm btn-secondary btn-blocked">Bloquear</a>
-                  <a id="boton-eliminar" href="{{ path('user_delete', { id : user.id }) }}" class="btn btn-sm btn-danger btn-delete">Eliminar</a>
-                </td>
-              </tr>
-							{% if user.isActive == 0 %}
-								<script language="JavaScript">
-									document.getElementById("fila").classList.add('row-blocked');
-									document.getElementById("boton-editar").classList.add('disabled');
-									document.getElementById("boton-eliminar").classList.add('disabled');
-									document.getElementById("boton-bloquear").innerHTML = "Desbloquear";
-								</script>
+							<!-- Si el usuario esta activo -->
+							{% if user.isActive == '1' %}
+								<tr id="fila" data-id="{{ user.id }}">
+									<td>{{ user.id }}</td>
+	                <td>{{ user.name }}</td>
+	                <td>{{ user.email }}</td>
+	                <td>{{ user.empresa }}</td>
+	                <td>
+	                  {% if user.role == 'ROLE_ADMIN' %}
+	                    <strong>Administrador</strong>
+	                  {% elseif user.role == 'ROLE_USER' %}
+	                    <strong>Usuario</strong>
+	                  {% endif %}
+	                </td>
+	                <td>
+	                  <a id="boton-editar" href="#" class="btn btn-sm btn-primary">Cambiar tipo</a>
+										<a id="boton-bloquear" href="{{ path('user_block', { id : user.id}) }}" class="btn btn-sm btn-secondary btn-blocked">Bloquear</a>
+	                  <a id="boton-eliminar" href="{{ path('user_delete', { id : user.id }) }}" class="btn btn-sm btn-danger btn-delete">Eliminar</a>
+	                </td>
+	              </tr>
+
+							<!-- si el usuario esta inactivo -->
+							{% elseif user.isActive == '0' %}
+								<tr id="fila" data-id="{{ user.id }}" class="row-blocked">
+									<td>{{ user.id }}</td>
+	                <td>{{ user.name }}</td>
+	                <td>{{ user.email }}</td>
+	                <td>{{ user.empresa }}</td>
+	                <td>
+	                  {% if user.role == 'ROLE_ADMIN' %}
+	                    <strong>Administrador</strong>
+	                  {% elseif user.role == 'ROLE_USER' %}
+	                    <strong>Usuario</strong>
+	                  {% endif %}
+	                </td>
+	                <td>
+	                  <a id="boton-editar" href="#" class="btn btn-sm btn-primary disabled">Cambiar tipo</a>
+										<a id="boton-desbloquear" href="{{ path('user_unblock', { id : user.id}) }}" class="btn btn-sm btn-secondary btn-unblocked">Desbloquear</a>
+	                  <a id="boton-eliminar" href="{{ path('user_delete', { id : user.id }) }}" class="btn btn-sm btn-danger btn-delete disabled">Eliminar</a>
+	                </td>
+	              </tr>
+
 							{% endif %}
             {% endfor %}
           </tbody>
@@ -62,8 +79,9 @@
     </div>
   </div>
 
-	{{ include('admin/delete-user.html.twig', { form: delete_form_ajax, message: '¿Esta seguro que desea eliminar este usuario?', id: 'form-delete'}) }}
-	{{ include('admin/block-user.html.twig', { form: block_form_ajax, message: '¿Esta seguro que desea bloquear este usuario?', id: 'form-block'}) }}
+	{{ include('admin/delete-user.html.twig', { form: delete_form_ajax, id: 'form-delete'}) }}
+	{{ include('admin/block-user.html.twig',  { form: block_form_ajax, id: 'form-block'}) }}
+	{{ include('admin/unblock-user.html.twig', { form: unblock_form_ajax, id: 'form-unblock'}) }}
 
 {% endblock %}
 
@@ -72,5 +90,6 @@
 
 	<script src="{{ asset('js/delete-user.js') }}"></script>
 	<script src="{{ asset('js/block-user.js') }}"></script>
+	<script src="{{ asset('js/unblock-user.js') }}"></script>
 
 {% endblock %}

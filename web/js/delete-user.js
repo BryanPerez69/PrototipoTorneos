@@ -16,7 +16,7 @@ $(document).ready(function(){
 
     //alert(data);
 
-    bootbox.confirm(message, function(res){
+    bootbox.confirm('¿Esta seguro que desea eliminar este usuario?', function(res){
       if(res == true)
       {
         $.post(url, data, function(result){
@@ -36,6 +36,13 @@ $(document).ready(function(){
           alert('ERROR');
           row.show();
         });
+
+        var delay = 3000;
+
+        setTimeout(function(){
+          location.reload();
+        }, delay);
+        
       }
     });
   });

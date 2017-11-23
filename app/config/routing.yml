@@ -31,7 +31,12 @@ user_delete:
 user_block:
     path: /admin/usuarios/bloquear/{id}
     defaults: {_controller: AppBundle:Admin:block}
-    methods: [POST, PUT]  
+    methods: [POST, PUT]
+
+user_unblock:
+    path: /admin/usuarios/desbloquear/{id}
+    defaults: {_controller: AppBundle:Admin:unblock}
+    methods: [POST, PUT]      
 
 gestion_torneos:
     path: /admin/torneos

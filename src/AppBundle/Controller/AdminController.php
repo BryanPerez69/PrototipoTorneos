@@ -32,9 +32,11 @@ class AdminController extends Controller
 
     $blockFormAjax = $this->createCustomForm(':USER_ID', 'PUT', 'user_block');
 
+    $unblockFormAjax = $this->createCustomForm(':USER_ID', 'PUT', 'user_unblock');
+
     if($this->isGranted("ROLE_ADMIN"))
     {
-      return $this->render('admin/usuarios.html.twig', array('users' => $users, 'delete_form_ajax' => $deleteFormAjax->createView(), 'block_form_ajax'=> $blockFormAjax->createView()));
+      return $this->render('admin/usuarios.html.twig', array('users' => $users, 'delete_form_ajax' => $deleteFormAjax->createView(), 'block_form_ajax'=> $blockFormAjax->createView(), 'unblock_form_ajax'=> $unblockFormAjax->createView()));
     }
     //se cierra la sesion al salir al index
     elseif($this->isGranted("IS_AUTHENTICATED_ANONYMOUSLY"))
@@ -123,7 +125,7 @@ class AdminController extends Controller
   }
 
   ##############################################################################
-  ###################ACCIONES PARA BLOQUEAR UN USUARIO##########################
+  ############ACCIONES PARA BLOQUEAR/DESBLOQUEAR UN USUARIO#####################
   ##############################################################################
 
   public function blockAction(Request $request, $id)
@@ -146,7 +148,7 @@ class AdminController extends Controller
       //peticion ajax
       if($request->isXMLHttpRequest())
       {
-        $res = $this->blockUser($user->getRole(), $user->getIsActive(), $em, $user);
+        $res = $this->blockUser($user->getRole(), $em, $user);
 
         return new Response(
           json_encode(array('blocked' => $res['blocked'], 'message' => $res['message'])),
@@ -158,49 +160,80 @@ class AdminController extends Controller
 
   }
 
-  private function blockUser($role, $isActive, $em, $user)
+  private function blockUser($role, $em, $user)
   {
-    if($isActive == '1')
+
+    if($role == 'ROLE_USER')
     {
-      if($role == 'ROLE_USER')
-      {
-        $user->setIsActive('0');
-        $em->flush();
+      $user->setIsActive('0');
+      $em->flush();
 
-        $message = 'El usuario ha sido bloqueado';
-        $blocked = 1;
-        $alert = 'mensaje';
-      }
-      elseif($role == 'ROLE_ADMIN')
-      {
-        $message = 'El usuario no ha sido bloqueado';
-        $blocked = 0;
-        $alert = 'error';
-      }
+      $message = 'El usuario ha sido bloqueado';
+      $blocked = 1;
+      $alert = 'mensaje';
     }
-    elseif($isActive == '0')
+    elseif($role == 'ROLE_ADMIN')
     {
-      if($role == 'ROLE_USER')
-      {
-        $user->setIsActive('1');
-        $em->flush();
-
-        $message = 'El usuario ha sido desbloqueado';
-        $blocked = 1;
-        $alert = 'mensaje';
-      }
-      elseif($role == 'ROLE_ADMIN')
-      {
-        $message = 'El usuario no ha sido desbloqueado';
-        $blocked = 0;
-        $alert = 'error';
-      }
+      $message = 'El usuario no ha sido bloqueado';
+      $blocked = 0;
+      $alert = 'error';
     }
-
 
     return array('blocked' => $blocked, 'message' => $message, 'alert' => $alert);
   }
 
+  public function unblockAction(Request $request, $id)
+  {
+
+    $em = $this->getDoctrine()->getManager();
+
+    $user = $em->getRepository('AppBundle:User')->find($id);
+
+    if(!$user)
+    {
+      throw $this->createNotfoundException('Usuario no encontrado');
+    }
+
+    $form = $this->createCustomForm($user->getId(), 'PUT', 'user_unblock');
+    $form->handleRequest($request);
+
+    if($form->isSubmitted() && $form->isValid())
+    {
+      //peticion ajax
+      if($request->isXMLHttpRequest())
+      {
+        $res = $this->unblockUser($user->getRole(), $em, $user);
+
+        return new Response(
+          json_encode(array('unblocked' => $res['unblocked'], 'message' => $res['message'])),
+          200,
+          array('content-Type' => 'aplication/json')
+        );
+      }
+    }
+  }
+
+  private function unblockUser($role, $em, $user)
+  {
+
+    if($role == 'ROLE_USER')
+    {
+      $user->setIsActive('1');
+      $em->flush();
+
+      $message = 'El usuario ha sido desbloqueado';
+      $unblocked = 1;
+      $alert = 'mensaje';
+    }
+    elseif($role == 'ROLE_ADMIN')
+    {
+      $message = 'El usuario no ha sido desbloqueado';
+      $unblocked = 0;
+      $alert = 'error';
+    }
+
+    return array('unblocked' => $unblocked, 'message' => $message, 'alert' => $alert);
+  }
 
   private function createCustomForm($id, $method, $route)
   {

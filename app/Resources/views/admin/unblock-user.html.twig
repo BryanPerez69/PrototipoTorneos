@@ -7,9 +7,9 @@
 
 <script>
 
-  function confirmDelete()
+  var message = '¿Esta seguro que desea desbloquear este usuario?';
+  function confirmUnblock()
   {
-    var message = '¿Esta seguro que desea eliminar este usuario?';
     bootbox.confirm(message, function(result){
       if(result == true)
       {

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('.btn-blocked').click(function(e){
+  $('.btn-unblocked').click(function(e){
     e.preventDefault();
 
     var row = $(this).parents('tr');
@@ -20,25 +20,24 @@ $(document).ready(function(){
 
 
     //alert(id);
-    //Datos para bloquear
-    var form = $('#form-block');
+
+    var form = $('#form-unblock');
 
     var url = form.attr('action').replace(':USER_ID', id);
 
     var data = form.serialize();
 
-
     //alert(data);
 
-    bootbox.confirm('¿Esta seguro que desea bloquear este usuario?', function(res){
+    bootbox.confirm('¿Esta seguro que desea desbloquear este usuario?', function(res){
       if(res == true)
       {
         $.post(url, data, function(result){
-          if(result.blocked == 1)
+          if(result.unblocked == 1)
           {
-            row.addClass('row-blocked');
-            sameline.addClass('disabled');
-            thisbutton.text("Desbloquear");
+            row.removeClass('row-blocked');
+            sameline.removeClass('disabled');
+            thisbutton.text("Bloquear");
             $('#message').removeClass('invisible');
             $('#user-message').text(result.message);
 

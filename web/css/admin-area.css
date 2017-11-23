@@ -37,7 +37,14 @@ h6, .h6 {
   max-width: 60rem;
   background-color: #ffffff;
 }
-
+.page-header{
+  margin-bottom: 2%;
+}
+.table-header{
+  background-color: #076385;
+  font-weight: bold;
+  color: #ffffff;
+}
 .row-blocked {
   background-color: #e0e0e0;
   font-style: italic;
