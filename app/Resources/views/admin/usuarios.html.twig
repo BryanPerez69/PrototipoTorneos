@@ -15,6 +15,9 @@
       <div class="page-header">
         <h2  align="center"> Lista de Usuarios</h2>
       </div>
+			<div class="">
+				<a id="boton-crear" href="{{ path('user_add') }}" class="btn btn-sm btn-primary">Crear usuario</a>
+			</div>
       <div class="table-responsive">
         <table class="table table-hover">
           <thead>
@@ -38,9 +41,9 @@
 	                <td>{{ user.empresa }}</td>
 	                <td>
 	                  {% if user.role == 'ROLE_ADMIN' %}
-	                    <strong>Administrador</strong>
+	                    <span class="badge badge-success">Administrador</span>
 	                  {% elseif user.role == 'ROLE_USER' %}
-	                    <strong>Usuario</strong>
+	                    <span class="badge badge-info">Usuario</span>
 	                  {% endif %}
 	                </td>
 	                <td>
@@ -59,9 +62,9 @@
 	                <td>{{ user.empresa }}</td>
 	                <td>
 	                  {% if user.role == 'ROLE_ADMIN' %}
-	                    <strong>Administrador</strong>
+	                    <span class="badge badge-success">Administrador</span>
 	                  {% elseif user.role == 'ROLE_USER' %}
-	                    <strong>Usuario</strong>
+	                    <span class="badge badge-info">Usuario</span>
 	                  {% endif %}
 	                </td>
 	                <td>

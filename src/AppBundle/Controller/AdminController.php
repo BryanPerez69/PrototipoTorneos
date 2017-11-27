@@ -6,6 +6,7 @@ use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -65,6 +66,26 @@ class AdminController extends Controller
     }
 
 
+  }
+
+  ##############################################################################
+  #####################ACCIONES PARA CREAR UN USUARIO##########################
+  ##############################################################################
+
+
+  /**
+    * @Route("/admin/usuarios/crear", name="user_add")
+    * @Method({"GET","POST"})
+    */
+  public function addAction(Request $request)
+  {
+    // 1) build the form
+    $user = new User();
+    $form = $this->createCreateForm($user);
+
+    return $this->render('admin/crear-usuario.html.twig', array(
+      'form' => $form->createView()
+    ));
   }
 
   ##############################################################################
