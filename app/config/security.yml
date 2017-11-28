@@ -58,8 +58,10 @@ security:
 
     access_control:
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/home, roles: ROLE_USER }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin/$, roles: ROLE_ADMIN }
+        - { path: ^/home, roles: [ROLE_ADMIN,ROLE_USER] }
+        - { path: ^/torneo/$, roles: ROLE_USER }
+
 
 
         #- { path: ^/$, roles: IS_AUTHENTICATED_FULLY }

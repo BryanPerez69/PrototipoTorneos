@@ -39,11 +39,11 @@ class AdminController extends Controller
     {
       return $this->render('admin/usuarios.html.twig', array('users' => $users, 'delete_form_ajax' => $deleteFormAjax->createView(), 'block_form_ajax'=> $blockFormAjax->createView(), 'unblock_form_ajax'=> $unblockFormAjax->createView()));
     }
-    //se cierra la sesion al salir al index
-    elseif($this->isGranted("IS_AUTHENTICATED_ANONYMOUSLY"))
-    {
-      return $this->redirectToRoute('logout');
-    }
+    // //se cierra la sesion al salir al index
+    // elseif($this->isGranted("IS_AUTHENTICATED_ANONYMOUSLY"))
+    // {
+    //   return $this->redirectToRoute('logout');
+    // }
   }
 
   /**

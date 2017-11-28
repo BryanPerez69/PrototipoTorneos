@@ -51,8 +51,17 @@ class UserController extends Controller
     /*$torneos_section = $em->getRepository('AppBundle:Torneos')->findBy(array('deporte' => 2));*/
 
     //return new Response($torneos_section->getResult());
+    if ($this->isGranted("ROLE_USER"))
+    {
+      return $this->render('usuario/torneos_section.html.twig', array('torneos_section' => $torneos_section));
+    }
+    elseif ($this->isGranted("IS_AUTHENTICATED_ANONYMOUSLY"))
+    {
+      return $this->redirectToRoute('index');
+    }
 
-    return $this->render('usuario/torneos_section.html.twig', array('torneos_section' => $torneos_section));
+
+
 
   }
 
