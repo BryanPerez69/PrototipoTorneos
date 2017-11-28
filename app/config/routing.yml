@@ -23,11 +23,6 @@ gestion_usuarios:
     path: /admin/usuarios
     defaults: {_controller: AppBundle:Admin:userManagement }
 
-user_add:
-    path: /admin/usuarios/crear
-    defaults: {_controller: AppBundle:Admin:add}
-    methods: [GET,POST]
-
 user_delete:
     path: /admin/usuarios/delete/{id}
     defaults: {_controller: AppBundle:Admin:delete}

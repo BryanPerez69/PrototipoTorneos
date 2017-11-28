@@ -15,9 +15,6 @@
       <div class="page-header">
         <h2  align="center"> Lista de Usuarios</h2>
       </div>
-			<div class="">
-				<a id="boton-crear" href="{{ path('user_add') }}" class="btn btn-sm btn-primary">Crear usuario</a>
-			</div>
       <div class="table-responsive">
         <table class="table table-hover">
           <thead>
@@ -90,6 +87,8 @@
 
 {% block javascripts %}
 	{{ parent() }}
+
+	
 
 	<script src="{{ asset('js/delete-user.js') }}"></script>
 	<script src="{{ asset('js/block-user.js') }}"></script>

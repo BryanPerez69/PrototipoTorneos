@@ -37,13 +37,14 @@ class AdminController extends Controller
 
     if($this->isGranted("ROLE_ADMIN"))
     {
+
       return $this->render('admin/usuarios.html.twig', array('users' => $users, 'delete_form_ajax' => $deleteFormAjax->createView(), 'block_form_ajax'=> $blockFormAjax->createView(), 'unblock_form_ajax'=> $unblockFormAjax->createView()));
     }
-    // //se cierra la sesion al salir al index
-    // elseif($this->isGranted("IS_AUTHENTICATED_ANONYMOUSLY"))
-    // {
-    //   return $this->redirectToRoute('logout');
-    // }
+    //se cierra la sesion al salir al index
+    elseif($this->isGranted("IS_AUTHENTICATED_ANONYMOUSLY"))
+    {
+      return $this->redirectToRoute('logout');
+    }
   }
 
   /**
@@ -68,25 +69,6 @@ class AdminController extends Controller
 
   }
 
-  ##############################################################################
-  #####################ACCIONES PARA CREAR UN USUARIO##########################
-  ##############################################################################
-
-
-  /**
-    * @Route("/admin/usuarios/crear", name="user_add")
-    * @Method({"GET","POST"})
-    */
-  public function addAction(Request $request)
-  {
-    // 1) build the form
-    $user = new User();
-    $form = $this->createCreateForm($user);
-
-    return $this->render('admin/crear-usuario.html.twig', array(
-      'form' => $form->createView()
-    ));
-  }
 
   ##############################################################################
   #####################ACCIONES PARA BORRAR UN USUARIO##########################
