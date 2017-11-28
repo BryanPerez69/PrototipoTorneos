@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class UserType extends AbstractType
 {
@@ -32,9 +33,10 @@ class UserType extends AbstractType
               'first_options'  => array('label' => 'Contraseña'),
               'second_options' => array('label' => 'Repite contraseña')
           ))
+      ->add('isActive', CheckboxType::class, array('label' => 'Activo'))
       ->add('role', ChoiceType::class, array('choices' => array(
-              'ROLE_ADMIN' => 'Administrador',
-              'ROLE_USER' => 'Usuario'), 'placeholder' => 'Seleccionar un tipo'))
+              'Administrador' => 'ROLE_ADMIN',
+              'Usuario' => 'ROLE_USER'), 'placeholder' => 'Seleccionar un tipo'))
       //->add('isactive', HiddenType::class, array('by_reference' => true))
       ->add('guardar', SubmitType::class)
       ->add('borrar', ResetType::class);

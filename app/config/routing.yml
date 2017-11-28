@@ -23,6 +23,10 @@ gestion_usuarios:
     path: /admin/usuarios
     defaults: {_controller: AppBundle:Admin:userManagement }
 
+nuevo_usuario:
+    path: /admin/usuarios/nuevo
+    defaults: {_controller: AppBundle:Admin:nuevoUsuario}
+
 user_delete:
     path: /admin/usuarios/delete/{id}
     defaults: {_controller: AppBundle:Admin:delete}
