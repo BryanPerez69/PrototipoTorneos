@@ -27,6 +27,10 @@ nuevo_usuario:
     path: /admin/usuarios/nuevo
     defaults: {_controller: AppBundle:Admin:nuevoUsuario}
 
+user_edit:
+    path: /admin/usuarios/editar/{id}
+    defaults: {_controller: AppBundle:Admin:edit}
+
 user_delete:
     path: /admin/usuarios/delete/{id}
     defaults: {_controller: AppBundle:Admin:delete}

@@ -1,0 +1,81 @@
+{% extends 'admin/layout_admin.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Custom styles for this template -->
+	<link href="{{ asset('css/admin-area.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+
+  <div class="container contenedor">
+    <div class="form-group" method="post">
+
+      <div class="page-header">
+        <h2  align="center">Editar usuario</h2>
+      </div>
+      {{ form_start(form, { 'attr' : {'role' : 'form' } }) }}
+
+
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Nombre de usuario'}} ) }}
+        <span class="text_danger">{{ form_errors(form.name) }}</span>
+
+        {{ form_label(form.empresa) }}
+        {{ form_widget(form.empresa, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off',
+        'placeholder': 'Nombre de la Empresa'}} ) }}
+        <span class="text_danger">{{ form_errors(form.empresa) }}</span>
+
+
+
+        {{ form_label(form.nit) }}
+        {{ form_widget(form.nit, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Nit de la Empresa',
+        'pattern': '[0-9]{9}', 'title': 'Este campo debe tener exactamente 9 digitos'}} ) }}
+        <span class="text_danger">{{ form_errors(form.nit) }}</span>
+
+
+
+
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'correo@ejemplo.com' }} ) }}
+        <span class="text_danger">{{ form_errors(form.email) }}</span>
+
+
+
+        {{ form_label(form.plainPassword.first) }}
+        {{ form_widget(form.plainPassword.first, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Escriba la contraseña' }} ) }}
+        <span class="text_danger">{{ form_errors(form.plainPassword.first) }}</span>
+
+
+
+        {{ form_label(form.plainPassword.second) }}
+        {{ form_widget(form.plainPassword.second, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Escriba de nuevo la contraseña' }} ) }}
+        <span class="text_danger">{{ form_errors(form.plainPassword.second) }}</span>
+
+        {{ form_label(form.role) }}
+        {{ form_widget(form.role, { 'attr' : { 'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Seleccione una opcion' }} ) }}
+        <span class="text_danger">{{ form_errors(form.role) }}</span>
+
+        <div class="checkbox">
+          {{ form_widget(form.isActive, { 'attr' : { 'class': 'btn btn-md btn-secondary btn-block', 'disabled': 'disabled', 'style': 'display:none'} }) }}
+          <span class="text_danger">{{ form_errors(form.isActive) }}</span>
+        </div>
+
+
+
+        <div class="form-boton">
+          {{ form_widget(form.guardar, { 'label': 'Editar usuario', 'attr' : { 'class': 'btn btn-md btn-primary btn-block'}} ) }}
+          {{ form_widget(form.borrar, { 'label': 'Limpiar', 'attr' : { 'class': 'btn btn-md btn-secondary btn-block', 'disabled': 'disabled', 'style': 'display:none'}} ) }}
+        </div>
+
+     {{ form_end(form) }}
+   </div>
+  </div><!-- /container-->
+
+{% endblock %}
+
+{% block javascripts %}
+		{{ parent() }}
+
+{% endblock %}

@@ -40,6 +40,10 @@ h6, .h6 {
 .page-header{
   margin-bottom: 2%;
 }
+.pre-table {
+  margin: auto;
+  padding-bottom: 20px;
+}
 .table-header{
   background-color: #076385;
   font-weight: bold;
