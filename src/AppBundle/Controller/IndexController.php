@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\FormError;
 
 class IndexController extends Controller
 {
@@ -40,25 +42,40 @@ class IndexController extends Controller
           $form->handleRequest($request);
           if ($form->isSubmitted() && $form->isValid()) {
 
-              // 3) Encode the password (you could also do this via Doctrine listener)
-              $password = $this->get('security.password_encoder')
-                  ->encodePassword($user, $user->getPlainPassword());
-              $user->setPassword($password);
+              $plainPassword = $form->get('plainPassword')->getData();
 
-              //Ingreso los valores por defecto
-              $user->setRole('ROLE_USER');
-              $user->setIsActive('1');
+              $passwordConstraint = new Assert\NotBlank();
+              $errorList = $this->get('validator')->validate($plainPassword, $passwordConstraint);
 
-              // 4) save the User!
-              $em = $this->getDoctrine()->getManager();
-              $em->persist($user);
-              $em->flush();
+              if(count($errorList) == 0)
+              {
+                // 3) Encode the password (you could also do this via Doctrine listener)
+                $password = $this->get('security.password_encoder')
+                    ->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($password);
 
-              // ... do any other work - like sending them an email, etc
-              // maybe set a "flash" success message for the user
+                //Ingreso los valores por defecto
+                $user->setRole('ROLE_USER');
+                $user->setIsActive('1');
 
-              return $this->redirectToRoute('index');
-              //return new Response('Usuario registrado '.$user->getId());
+                // 4) save the User!
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+
+                // ... do any other work - like sending them an email, etc
+                // maybe set a "flash" success message for the user
+
+                return $this->redirectToRoute('index');
+                //return new Response('Usuario registrado '.$user->getId());
+              }
+              else
+              {
+                $errorMessage = new FormError($errorList[0]->getMessage());
+                $form->get('plainPassword')->get('first')->addError($errorMessage);
+                $form->get('plainPassword')->get('second')->addError($errorMessage);
+              }
+
 
           }
 

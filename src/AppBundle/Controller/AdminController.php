@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\FormError;
 
 class AdminController extends Controller
 {
@@ -87,22 +89,39 @@ class AdminController extends Controller
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
 
-        // 3) Encode the password (you could also do this via Doctrine listener)
-        $password = $this->get('security.password_encoder')
-            ->encodePassword($user, $user->getPlainPassword());
-        $user->setPassword($password);
+        $plainPassword = $form->get('plainPassword')->getData();
+
+        $passwordConstraint = new Assert\NotBlank();
+        $errorList = $this->get('validator')->validate($plainPassword, $passwordConstraint);
 
 
-        // 4) save the User!
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
+        if(count($errorList) == 0)
+        {
+          // 3) Encode the password (you could also do this via Doctrine listener)
+          $password = $this->get('security.password_encoder')
+              ->encodePassword($user, $user->getPlainPassword());
+          $user->setPassword($password);
 
-        // ... do any other work - like sending them an email, etc
-        // maybe set a "flash" success message for the user
 
-        return $this->redirectToRoute('gestion_usuarios');
-        //return new Response('Usuario registrado '.$user->getId());
+          // 4) save the User!
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($user);
+          $em->flush();
+
+          // ... do any other work - like sending them an email, etc
+          // maybe set a "flash" success message for the user
+
+          return $this->redirectToRoute('gestion_usuarios');
+          //return new Response('Usuario registrado '.$user->getId());
+        }
+        else
+        {
+          $errorMessage = new FormError($errorList[0]->getMessage());
+          $form->get('plainPassword')->get('first')->addError($errorMessage);
+          $form->get('plainPassword')->get('second')->addError($errorMessage);
+        }
+
+
 
     }
 
@@ -130,25 +149,36 @@ class AdminController extends Controller
     if ($form->isSubmitted() && $form->isValid()) {
 
         $plainPassword = $form->get('plainPassword')->getData();
-        
-        if (!empty($password)) {
 
+        if (!empty($plainPassword)) {
+
+
+          $encoder = $this->get('security.password_encoder');
+          $encoded = $encoder->encodePassword($user, $user->getPlainPassword());
+          $user->setPassword($encoded);
+
+        }
+        else{
+          $user->setPassword($currentPassword);
         }
         // 3) Encode the password (you could also do this via Doctrine listener)
         // $password = $this->get('security.password_encoder')
         //     ->encodePassword($user, $user->getPlainPassword());
         // $user->setPassword($password);
-
+        if($form->get('role')->getData() == 'ROLE_ADMIN')
+        {
+          $user->setIsActive(1);
+        }
 
         // 4) save the User!
         // $em = $this->getDoctrine()->getManager();
-        // $em->persist($user);
+        $em->persist($user);
         $em->flush();
 
         // ... do any other work - like sending them an email, etc
         // maybe set a "flash" success message for the user
 
-        // return $this->redirectToRoute('gestion_usuarios');
+        return $this->redirectToRoute('gestion_usuarios');
         //return new Response('Usuario registrado '.$user->getId());
 
     }

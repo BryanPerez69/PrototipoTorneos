@@ -33,6 +33,7 @@ h6, .h6 {
  */
 
 .contenedor {
+  margin-top: -1%;
   padding: 20px;
   max-width: 60rem;
   background-color: #ffffff;
@@ -95,7 +96,12 @@ h6, .h6 {
 }
 
 /*estilos para nuevo_usuario.html.twig*/
-
+.formulario {
+  padding-top: 2%;
+  margin:auto;
+  max-width: 70%;
+  background-color: #dee6e7;
+}
 .form-group {
   margin: auto;
   max-width: 60%;
@@ -137,8 +143,12 @@ h6, .h6 {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.form-group .form-boton {
-  max-width: 200px;
-  padding: 20px;
-  margin: 0 auto;
+.form-botones {
+  margin: auto;
+  max-width: 300px;
+}
+.form-boton {
+  width: 140px;
+  padding-bottom: 20px;
+  margin: auto;
 }
