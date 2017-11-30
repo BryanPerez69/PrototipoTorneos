@@ -67,26 +67,27 @@ class User  implements AdvancedUserInterface, \Serializable
      */
     private $password;
 
+
+
     /**
-   * @Assert\NotBlank()
-   * @Assert\Length(max=4096)
-   */
-  private $plainPassword;
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
-  /**
-       * @var string
-       *
-       * @ORM\Column(name="role", type="string", length=50, options={"default" = "ROLE_USER"}, columnDefinition="ENUM('ROLE_ADMIN', 'ROLE_USER')")
-       *
-       */
-      private $role;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=50, options={"default" = "ROLE_USER"}, columnDefinition="ENUM('ROLE_ADMIN', 'ROLE_USER')")
+     *
+     */
+    private $role;
 
-      /**
-       * @var bool
-       *
-       * @ORM\Column(name="is_active", type="boolean", options={"default" = "1"})
-       */
-      private $isActive;
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_active", type="boolean", options={"default" = "1"})
+     */
+    private $isActive;
 
 
 

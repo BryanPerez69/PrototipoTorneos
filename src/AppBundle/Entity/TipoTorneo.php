@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="tipo_torneo")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TipoTorneoRepository")
- * @UniqueEntity(fields="email")
+ * @UniqueEntity(fields="descripcion")
  */
 class TipoTorneo
 {
@@ -39,7 +39,7 @@ class TipoTorneo
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", unique=true, length=255)
+     * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
 

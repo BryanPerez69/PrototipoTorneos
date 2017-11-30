@@ -123,25 +123,32 @@ class AdminController extends Controller
 
     $form = $this->createForm(UserType::class, $user);
 
+    $currentPassword = $user->getPassword();
+
     // 2) handle the submit (will only happen on POST)
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
 
+        $plainPassword = $form->get('plainPassword')->getData();
+        
+        if (!empty($password)) {
+
+        }
         // 3) Encode the password (you could also do this via Doctrine listener)
-        $password = $this->get('security.password_encoder')
-            ->encodePassword($user, $user->getPlainPassword());
-        $user->setPassword($password);
+        // $password = $this->get('security.password_encoder')
+        //     ->encodePassword($user, $user->getPlainPassword());
+        // $user->setPassword($password);
 
 
         // 4) save the User!
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
+        // $em = $this->getDoctrine()->getManager();
+        // $em->persist($user);
         $em->flush();
 
         // ... do any other work - like sending them an email, etc
         // maybe set a "flash" success message for the user
 
-        return $this->redirectToRoute('gestion_usuarios');
+        // return $this->redirectToRoute('gestion_usuarios');
         //return new Response('Usuario registrado '.$user->getId());
 
     }

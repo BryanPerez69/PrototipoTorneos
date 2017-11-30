@@ -58,7 +58,8 @@
         <span class="text_danger">{{ form_errors(form.role) }}</span>
 
         <div class="checkbox">
-          {{ form_widget(form.isActive, { 'attr' : { 'class': 'btn btn-md btn-secondary btn-block', 'disabled': 'disabled', 'style': 'display:none'} }) }}
+					{{ form_label(form.isActive) }}
+          {{ form_widget(form.isActive) }}
           <span class="text_danger">{{ form_errors(form.isActive) }}</span>
         </div>
 
