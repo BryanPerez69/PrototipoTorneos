@@ -10,9 +10,15 @@
 	{{ parent() }}
 	<div class="container">
 		<br>
-		<h1 align="center">Sistema de adminitracion</h1>
-		<a href="{{ path('gestion_usuarios') }}">Usuarios</a>
-		<a href="{{ path('gestion_torneos') }}">Torneos</a>
+		<div class="page-header">
+			<h1 align="center">Sistema de adminitracion</h1>
+		</div>
+		<div class="d-flex justify-content-around boton-admin">
+			<a class="btn btn-lg btn-primary" href="{{ path('gestion_usuarios') }}">Usuarios</a>
+			<a class="btn btn-lg btn-primary" href="{{ path('gestion_torneos') }}">Torneos</a>
+			<a class="btn btn-lg btn-primary disabled" href="#">Galeria</a>
+			<a class="btn btn-lg btn-primary disabled" href="#">Carnets</a>
+		</div>
 	</div>
 {% endblock %}
 
